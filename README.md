@@ -17,14 +17,14 @@ So_Long is a 2D puzzle game where the player navigates through a grid-based envi
 
 - C compiler (GCC recommended)
 - Make tool
-- [MiniLibX](https://github.com/42Paris/minilibx-linux) for graphical rendering
+- [MLX42](https://github.com/codam-coding-college/MLX42) for graphical rendering
 - Linux-based operating system (or compatible environment with MiniLibX support)
 
 ## Installation
 
 ### Clone the repository
 
-    git clone https://github.com/yourusername/so_long.git
+   
     cd so_long
 
 ### Compile the project
