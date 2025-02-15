@@ -1,6 +1,8 @@
 # so_long
 42 school project
 
+![image](https://github.com/user-attachments/assets/4ce77390-1cca-4d66-807f-33a6d5faaf34)
+
 So_Long is a 2D puzzle game where the player navigates through a grid-based environment to reach a goal while avoiding obstacles. The game is built using the C programming language, and it uses the MLX42 library for graphical rendering.
 
 ## Features
