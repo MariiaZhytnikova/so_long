@@ -8,6 +8,7 @@ So_Long is a 2D puzzle game where the player navigates through a grid-based envi
 
 Nice tools to draw sprites:
 https://www.piskelapp.com/
+
 https://www.online-image-editor.com/
 
 ## Features
