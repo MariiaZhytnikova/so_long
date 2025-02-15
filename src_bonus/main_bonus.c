@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:16:52 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/12 18:27:04 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:56:45 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
-	data = (t_data *)malloc(sizeof(t_data));
+	data = (t_data *)ft_calloc(1, sizeof(t_data));
 	if (!data)
 		return (1);
 	data->map = get_map(argc, argv);
@@ -25,10 +25,11 @@ int	main(int argc, char **argv)
 		free(data);
 		exit (1);
 	}
-	if (data->map->size.x * TS >= 3840 || data->map->size.y * \
-		TS >= 2160)
-		game_error(data, "./so_ long: map is too big", 1);
 	init_mlx(data);
+	mlx_get_monitor_size(0, &data->width, &data->height);
+	if (data->map->size.x * TS >= data->width || data->map->size.y * \
+		TS >= data->height)
+		game_error(data, "./so_ long: map is too big", 1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	mlx_close_hook(data->mlx, destroy_all, data);
 	mlx_loop_hook(data->mlx, animate_floor, data);

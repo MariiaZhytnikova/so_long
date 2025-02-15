@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:48:56 by yuritkachen       #+#    #+#             */
-/*   Updated: 2024/11/12 18:27:00 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:22:48 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_itoa(int num)
 	char	*str;
 
 	i = 0;
-	str = (char *)malloc(sizeof(char) * 12);
+	str = (char *)ft_calloc(12, sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	else if (num == -2147483648)

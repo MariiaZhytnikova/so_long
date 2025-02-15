@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:26:18 by mzhitnik          #+#    #+#             */
-/*   Updated: 2024/11/15 10:22:32 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:25:41 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *src)
 	if (!src)
 		return (NULL);
 	len = ft_strlen(src);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
+	dest = (char *)ft_calloc((len + 1), sizeof(char));
 	if (dest == NULL)
 		return (NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:02 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/13 10:37:41 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:57:45 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,48 +20,51 @@
 # define FRAME_DELAY 10
 # define FRAME_DELAY_COL 30
 # define TS 64
-# define WALL "./textures/64/wall.png"
-# define FLOOR "./textures/64/floor.png"
-# define COL1 "./textures/64/col-1.png"
-# define COL2 "./textures/64/col-2.png"
-# define EXIT "./textures/64/exit.png"
-# define EXIT_OPEN "./textures/64/exit_open.png"
-# define HERO_L1 "./textures/64/hero_l-1.png"
-# define HERO_R1 "./textures/64/hero_r-1.png"
-# define HERO_L2 "./textures/64/hero_l-2.png"
-# define HERO_R2 "./textures/64/hero_r-2.png"
-# define HERO_L3 "./textures/64/hero_l-3.png"
-# define HERO_R3 "./textures/64/hero_r-3.png"
-# define MOVES "./textures/64/moves.png"
-# define ENEM1 "./textures/64/enemy-1.png"
-# define ENEM2 "./textures/64/enemy-2.png"
-# define ENEM3 "./textures/64/enemy-3.png"
+# define WALL "./textures/wall.png"
+# define FLOOR "./textures/floor.png"
+# define COL1 "./textures/col-1.png"
+# define COL2 "./textures/col-2.png"
+# define EXIT "./textures/exit.png"
+# define EXIT_OPEN "./textures/exit_open.png"
+# define HERO_L1 "./textures/hero_l-1.png"
+# define HERO_R1 "./textures/hero_r-1.png"
+# define HERO_L2 "./textures/hero_l-2.png"
+# define HERO_R2 "./textures/hero_r-2.png"
+# define HERO_L3 "./textures/hero_l-3.png"
+# define HERO_R3 "./textures/hero_r-3.png"
+# define MOVES "./textures/moves.png"
+# define ENEM1 "./textures/enemy-1.png"
+# define ENEM2 "./textures/enemy-2.png"
+# define ENEM3 "./textures/enemy-3.png"
 
-typedef struct s_point {
-	int x;
-	int y;
-} t_point;
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
-typedef struct s_enemies {
-	int x;
-	int y;
-	int dir_x;
-	int dir_y;
-	int frame;
-	int frame_count;
-} t_enemies;
+typedef struct s_enemies
+{
+	int	x;
+	int	y;
+	int	dir_x;
+	int	dir_y;
+	int	frame;
+	int	frame_count;
+}	t_enemies;
 
-typedef struct s_map {
-	char **field;
-	t_point pos;
-	t_point exit_pos;
-	t_point size;
-	int col;
-	int exit;
-	int hero;
-	int enemy;
-	t_enemies *enemies;
-} t_map;
+typedef struct s_map
+{
+	char		**field;
+	t_point		pos;
+	t_point		exit_pos;
+	t_point		size;
+	int			col;
+	int			exit;
+	int			hero;
+	int			enemy;
+	t_enemies	*enemies;
+}	t_map;
 
 typedef struct s_img
 {
@@ -74,8 +77,7 @@ typedef struct s_img
 	mlx_image_t	**player_r;
 	mlx_image_t	**enemies;
 	mlx_image_t	*moves_field;
-} t_img;
-
+}	t_img;
 
 typedef struct s_data
 {
@@ -89,6 +91,8 @@ typedef struct s_data
 	int		col_count;
 	int		col_frame;
 	int		col_frame_count;
+	int		width;
+	int		height;
 }	t_data;
 
 void		free_map(t_map *map);

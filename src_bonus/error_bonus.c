@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:45:58 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/12 18:26:08 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:16:10 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,66 +20,49 @@ void	map_error(t_map *map, int code)
 	if (code == 2)
 		ft_putendl_fd("./so_long: map read failed", 2);
 	if (code == 3)
-		ft_putendl_fd("./so_long: map is not rectangular", 2);
+		ft_putendl_fd("./so_long: map is empty or too small", 2);
 	if (code == 4)
-		ft_putendl_fd("./so_long: map contain invalid characters", 2);
+		ft_putendl_fd("./so_long: map is not rectangular", 2);
 	if (code == 5)
-		ft_putendl_fd("./so_long: no such file or directory", 2);
+		ft_putendl_fd("./so_long: map contain invalid characters", 2);
 	if (code == 6)
-		ft_putendl_fd("./so_long: map must be closed/surrounded by walls", 2);
+		ft_putendl_fd("./so_long: no such file or directory", 2);
 	if (code == 7)
+		ft_putendl_fd("./so_long: map must be closed/surrounded by walls", 2);
+	if (code == 8)
 		ft_putendl_fd(\
 		"./so_long: 1 exit, 1 player and at least 1 item accepted", 2);
-	if (code == 8)
-		ft_putendl_fd("./so_long: all items and exit should be reachable", 2);
 	if (code == 9)
+		ft_putendl_fd("./so_long: all items and exit should be reachable", 2);
+	if (code == 10)
 		ft_putendl_fd("./so_long: too many enemies", 2);
 	if (map)
 		free_map(map);
 }
 
-void	cleanup_anim(t_data *data)
+void	free_map(t_map *map)
 {
-	if (data->img->enemies)
+	int	i;
+
+	i = 0;
+	if (map->field)
 	{
-		mlx_delete_image(data->mlx, data->img->enemies[0]);
-		mlx_delete_image(data->mlx, data->img->enemies[1]);
-		mlx_delete_image(data->mlx, data->img->enemies[2]);
+		while (map->field[i])
+			free(map->field[i++]);
+		free(map->field);
 	}
-	free(data->img->enemies);
-	if (data->img->player_l)
-	{
-		mlx_delete_image(data->mlx, data->img->player_l[0]);
-		mlx_delete_image(data->mlx, data->img->player_l[1]);
-		mlx_delete_image(data->mlx, data->img->player_l[2]);
-	}
-	free(data->img->player_l);
-	if (data->img->player_r)
-	{
-		mlx_delete_image(data->mlx, data->img->player_r[0]);
-		mlx_delete_image(data->mlx, data->img->player_r[1]);
-		mlx_delete_image(data->mlx, data->img->player_r[2]);
-	}
-	free(data->img->player_r);
-	if (data->img->exit)
-		mlx_delete_image(data->mlx, data->img->exit);
-	if (data->img->exit_open)
-		mlx_delete_image(data->mlx, data->img->exit_open);
+	if (map->enemy > 0)
+		free(map->enemies);
+	if (map)
+		free(map);
 }
 
 void	cleanup_images(t_data *data)
 {
-	if (data->img->wall)
-		mlx_delete_image(data->mlx, data->img->wall);
-	if (data->img->flr)
-		mlx_delete_image(data->mlx, data->img->flr);
-	if (data->img->col)
-	{
-		mlx_delete_image(data->mlx, data->img->col[0]);
-		mlx_delete_image(data->mlx, data->img->col[1]);
-	}
+	free(data->img->enemies);
+	free(data->img->player_l);
+	free(data->img->player_r);
 	free(data->img->col);
-	cleanup_anim(data);
 	free(data->img);
 }
 

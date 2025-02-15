@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:02 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/13 10:40:46 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:25:02 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,30 @@
 # include <fcntl.h>
 
 # define TS 64
-# define WALL "./textures/64/wall.png"
-# define FLOOR "./textures/64/floor.png"
-# define COL1 "./textures/64/col-1.png"
-# define EXIT "./textures/64/exit.png"
-# define EXIT_OPEN "./textures/64/exit_open.png"
-# define HERO_L1 "./textures/64/hero_l-1.png"
-# define HERO_R1 "./textures/64/hero_r-1.png"
-# define ENEM1 "./textures/64/enemy-1.png"
+# define WALL "./textures/wall.png"
+# define FLOOR "./textures/floor.png"
+# define COL1 "./textures/col-1.png"
+# define EXIT "./textures/exit.png"
+# define EXIT_OPEN "./textures/exit_open.png"
+# define HERO_L1 "./textures/hero_l-1.png"
+# define HERO_R1 "./textures/hero_r-1.png"
 
-typedef struct s_point {
-	int x;
-	int y;
-} t_point;
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
-
-typedef struct s_map {
-	char **field;
-	t_point pos;
-	t_point exit_pos;
-	t_point size;
-	int col;
-	int exit;
-	int hero;
-} t_map;
+typedef struct s_map
+{
+	char	**field;
+	t_point	pos;
+	t_point	exit_pos;
+	t_point	size;
+	int		col;
+	int		exit;
+	int		hero;
+}	t_map;
 
 typedef struct s_img
 {
@@ -52,8 +52,7 @@ typedef struct s_img
 	mlx_image_t	*exit_open;
 	mlx_image_t	*player_l;
 	mlx_image_t	*player_r;
-} t_img;
-
+}	t_img;
 
 typedef struct s_data
 {
@@ -63,6 +62,8 @@ typedef struct s_data
 	int		moves;
 	int		hero_dir;
 	int		col_count;
+	int		width;
+	int		height;
 }	t_data;
 
 void		free_map(t_map *map);

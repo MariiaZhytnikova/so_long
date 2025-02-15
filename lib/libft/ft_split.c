@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:14:38 by mzhitnik          #+#    #+#             */
-/*   Updated: 2024/11/15 10:23:17 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:25:13 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	*ft_strcpy(char *start, char *end)
 
 	i = 0;
 	len = end - start;
-	res = (char *)malloc(sizeof(char) * (len + 1));
+	res = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!res)
 		return (NULL);
 	while (i < len)
@@ -107,13 +107,13 @@ char	**ft_split(char const *str, char c)
 	num = ft_wrdc(str, c);
 	if (num == 0)
 	{
-		dest = (char **)malloc(sizeof(char *));
+		dest = (char **)ft_calloc(1, sizeof(char *));
 		if (!dest)
 			return (NULL);
 		dest[0] = NULL;
 		return (dest);
 	}
-	dest = (char **)malloc(sizeof(char *) * (num + 1));
+	dest = (char **)ft_calloc((num + 1), sizeof(char *));
 	if (!dest)
 		return (NULL);
 	if (!ft_split_processing(dest, str, c))

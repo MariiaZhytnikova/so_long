@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:48:56 by yuritkachen       #+#    #+#             */
-/*   Updated: 2024/11/12 17:22:00 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:26:52 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_strtrim(char const *str, char const *set)
 		len = 0;
 	else
 		len = last - first + 1;
-	res = (char *)malloc(sizeof(char) * (len + 1));
+	res = (char *)ft_calloc((len + 1), sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	i = 0;

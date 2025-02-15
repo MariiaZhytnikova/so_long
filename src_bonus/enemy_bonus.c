@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:52:11 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/12 18:23:35 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:57:39 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	odd_enemy_move(t_data *data, int i)
 {
 	if (data->map->field[data->map->enemies[i].y \
-			+ data->map->enemies[i].dir_y][data->map->enemies[i].x] == '1')
+			+ data->map->enemies[i].dir_y][data->map->enemies[i].x] == '1'
+			|| data->map->field[data->map->enemies[i].y \
+			+ data->map->enemies[i].dir_y][data->map->enemies[i].x] == 'E' )
 		data->map->enemies[i].dir_y *= -1;
 	else
 		data->map->enemies[i].y += data->map->enemies[i].dir_y;
@@ -24,7 +26,10 @@ void	odd_enemy_move(t_data *data, int i)
 void	even_enemy_move(t_data *data, int i)
 {
 	if (data->map->field[data->map->enemies[i].y][data->map->enemies[i].x \
-		+ data->map->enemies[i].dir_x] == '1')
+			+ data->map->enemies[i].dir_x] == '1'
+			|| data->map->field[data->map->enemies[i].y] \
+				[data->map->enemies[i].x \
+			+ data->map->enemies[i].dir_x] == 'E')
 		data->map->enemies[i].dir_x *= -1;
 	else
 		data->map->enemies[i].x += data->map->enemies[i].dir_x;

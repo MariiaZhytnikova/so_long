@@ -6,32 +6,17 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:45:52 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/13 10:56:40 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:51:41 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	if (map->field)
-	{
-		while (map->field[i])
-			free(map->field[i++]);
-		free(map->field);
-	}
-	if (map)
-		free(map);
-}
-
 void	copy_map(t_map *copy, t_map *map)
 {
 	int	y;
 
-	copy->field = (char **)malloc(sizeof(char *) * map->size.y);
+	copy->field = (char **)ft_calloc(map->size.y, sizeof(char *));
 	if (!copy->field)
 		return ;
 	copy->size.x = map->size.x;
@@ -110,20 +95,20 @@ int	fill_check(t_map *map)
 
 	fill_pos(map);
 	if (char_check(map))
-		return (4);
+		return (5);
 	if (boder_check(map) == 1)
-		return (6);
-	if (!(map->hero == 1 && map->exit == 1 && map->col > 0))
 		return (7);
+	if (!(map->hero == 1 && map->exit == 1 && map->col > 0))
+		return (8);
 	content.x = map->col;
 	content.y = map->exit;
-	copy = (t_map *)malloc(sizeof(t_map));
+	copy = (t_map *)ft_calloc(1, sizeof(t_map));
 	copy_map(copy, map);
 	if (!copy->field || !copy->field[0])
 		return (2);
 	flood_check(copy, copy->pos.x, copy->pos.y, &content);
 	free_map(copy);
 	if (content.x > 0 || content.y > 0)
-		return (8);
+		return (9);
 	return (0);
 }

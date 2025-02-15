@@ -6,25 +6,11 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:56:34 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/13 10:54:49 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:11:28 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init_map(t_map *map)
-{
-	map->field = NULL;
-	map->pos.x = 0;
-	map->pos.y = 0;
-	map->exit_pos.x = 0;
-	map->exit_pos.y = 0;
-	map->size.x = 0;
-	map->size.y = 0;
-	map->col = 0;
-	map->exit = 0;
-	map->hero = 0;
-}
 
 int	lines_check(t_map *map)
 {
@@ -54,7 +40,7 @@ int	line_count(char *fname)
 
 	fd = open(fname, O_RDONLY);
 	if (fd < 0)
-		return (map_error(NULL, 5), 0);
+		return (map_error(NULL, 6), 0);
 	count = 0;
 	while (1)
 	{
@@ -76,7 +62,7 @@ void	read_map(t_map *map, char *fname, int last)
 
 	fd = open(fname, O_RDONLY);
 	if (fd < 0)
-		return (map_error(map, 5));
+		return (map_error(map, 6));
 	count = 0;
 	while (count < last)
 	{
@@ -91,29 +77,35 @@ void	read_map(t_map *map, char *fname, int last)
 	close(fd);
 }
 
+int	file_check(char *file_name)
+{
+	return (ft_strlen(file_name) < 5 || !ft_strchr(file_name, '.') \
+			|| ft_strncmp((ft_strrchr(file_name, '.')), ".ber\0", 5));
+}
+
 t_map	*get_map(int argc, char **argv)
 {
 	t_map	*map;
 	int		code;
 
-	if (!argv[1] || !(ft_strlen(argv[1]) > 4 \
-			&& ft_strncmp((ft_strchr(argv[1], '.')), ".ber", 4)) || argc > 2)
+	if (!argv[1] || ft_strlen(argv[1]) < 5 || file_check(argv[1]) || argc > 2)
 		return (map_error(NULL, 1), NULL);
-	map = (t_map *)malloc(sizeof(t_map));
+	map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (map_error(NULL, 2), NULL);
-	init_map(map);
 	map->size.y = line_count(argv[1]);
+	if (!map->size.y)
+		return (free(map), NULL);
 	if (map->size.y < 3)
-		return (map_error(map, 2), NULL);
-	map->field = (char **)malloc(sizeof(char *) * map->size.y);
+		return (map_error(map, 3), NULL);
+	map->field = (char **)ft_calloc(map->size.y, sizeof(char *));
 	if (!map->field)
 		return (map_error(map, 2), NULL);
 	read_map(map, argv[1], map->size.y);
 	if (!map->field[0])
-		return (map_error(map, 2), NULL);
+		return (free(map), NULL);
 	if (lines_check(map) == 1)
-		return (map_error(map, 3), NULL);
+		return (map_error(map, 4), NULL);
 	code = fill_check(map);
 	if (code)
 		return (map_error(map, code), NULL);

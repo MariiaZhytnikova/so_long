@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:14:38 by mzhitnik          #+#    #+#             */
-/*   Updated: 2024/11/12 13:42:56 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:26:18 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	i = ft_strlen(s);
-	res = (char *)malloc(sizeof(char) * (i + 1));
+	res = (char *)ft_calloc((i + 1), sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;

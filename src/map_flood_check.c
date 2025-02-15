@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:39:51 by mzhitnik          #+#    #+#             */
-/*   Updated: 2025/02/13 10:55:58 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:27:05 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,13 @@ void	flood_check(t_map *map, int x, int y, t_point *content)
 		content->y -= 1;
 	if (map->field[y][x] == 'C')
 		content->x -= 1;
-
 	map->field[y][x] = '1';
 	if (y > 0 && map->field[y - 1][x] != '1')
-			flood_check(map, x, y - 1, content);
+		flood_check(map, x, y - 1, content);
 	if (y < (map->size.y - 2) && map->field[y + 1][x] != '1')
-			flood_check(map, x, y + 1, content);
+		flood_check(map, x, y + 1, content);
 	if (x < (map->size.x - 2) && map->field[y][x + 1] != '1')
-			flood_check(map, x + 1, y, content);
+		flood_check(map, x + 1, y, content);
 	if (x > 0 && map->field[y][x - 1] != '1')
-			flood_check(map, x - 1, y, content);
+		flood_check(map, x - 1, y, content);
 }

@@ -6,7 +6,7 @@
 /*   By: mzhitnik <mzhitnik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:14:38 by mzhitnik          #+#    #+#             */
-/*   Updated: 2024/11/10 19:50:13 by mzhitnik         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:27:14 by mzhitnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			res[0] = '\0';
 		return (res);
 	}
-	res = (char *)malloc(sizeof(char) * (len + 1));
+	res = (char *)ft_calloc((len + 1), sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	i = 0;
