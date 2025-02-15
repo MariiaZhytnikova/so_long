@@ -5,7 +5,7 @@ So_Long is a 2D puzzle game where the player navigates through a grid-based envi
 
 ## Features
 
-- **Player Movement**: Move the player using arrow or W, A, S, and D keys in the 2D world.
+- **Player Movement**: Move the player using arrow or 'W', 'A', 'S', and 'D' keys in the 2D world. For bonus SPACE is skip of move, only enemies position changed.
 - **Level Design**: Explore different maze-like levels, each with unique challenges.
 - **Objective**: Collect all items and reach the exit point.
 - **Graphics**: Simple yet engaging 2D graphics rendered using the MLX42 library.
