@@ -6,8 +6,9 @@
 
 So_Long is a 2D puzzle game where the player navigates through a grid-based environment to reach a goal while avoiding obstacles. The game is built using the C programming language, and it uses the MLX42 library for graphical rendering.
 
-Nice tool to draw sprites:
-https://www.piskelapp.com
+Nice tools to draw sprites:
+https://www.piskelapp.com/
+https://www.online-image-editor.com/
 
 ## Features
 
